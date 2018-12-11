@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  phpunit:
+    build: "."
+    environment:
+      PHPUNIT_DB_HOST: mysql
+    volumes:
+      - .:/app/
+      - testsuite:/tmp
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress_test
+
+volumes:
+  testsuite:
